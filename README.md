@@ -1,0 +1,1 @@
+# Friday-The-Desktop-AI-Assistant
