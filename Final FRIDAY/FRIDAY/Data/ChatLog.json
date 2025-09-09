@@ -1,0 +1,122 @@
+[
+    {
+        "role": "user",
+        "content": "Hello friday."
+    },
+    {
+        "role": "assistant",
+        "content": "Good evening, Boss. I\u2019m Friday. How may I assist?"
+    },
+    {
+        "role": "user",
+        "content": "What's the time?"
+    },
+    {
+        "role": "assistant",
+        "content": "It's 11:38 PM, Boss."
+    },
+    {
+        "role": "user",
+        "content": "Which current prime minister of india?"
+    },
+    {
+        "role": "assistant",
+        "content": "The current Prime Minister of India is Narendra Modi, as of my real-time information."
+    },
+    {
+        "role": "user",
+        "content": "Close not bed."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    },
+    {
+        "role": "user",
+        "content": "Close not bad."
+    },
+    {
+        "role": "assistant",
+        "content": "I'm glad I was close, Boss. If you'd like to know more, I can try to find the exact information for you."
+    },
+    {
+        "role": "user",
+        "content": "Generate a image of."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    },
+    {
+        "role": "user",
+        "content": "Who are you?"
+    },
+    {
+        "role": "assistant",
+        "content": "I am Friday, your personal AI Assistant. Always here to help you, Boss."
+    },
+    {
+        "role": "user",
+        "content": "What are the things you can do for me?"
+    },
+    {
+        "role": "assistant",
+        "content": "I can:\n1. Answer your questions\n2. Provide information\n3. Help with tasks\n4. Offer suggestions\n5. Give explanations\n6. Summarize content\n7. Translate text\n8. Generate text\n9. Search the internet\n10. Assist with language-related tasks, Boss."
+    },
+    {
+        "role": "user",
+        "content": "Mujhe pyar kare."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    },
+    {
+        "role": "user",
+        "content": "Maujon ki ravani hai."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    },
+    {
+        "role": "user",
+        "content": "Maujon ki."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    },
+    {
+        "role": "user",
+        "content": "Superhit gane is channel per hi hai sunhare gane aur kuchh yaden subscribe nau and press d bel icon."
+    },
+    {
+        "role": "assistant",
+        "content": "It seems like you're describing a YouTube channel, Boss."
+    },
+    {
+        "role": "user",
+        "content": "Nahin ho gaya kahin mare dar ke chuha to nahin ho gaya kone kone dekha."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    },
+    {
+        "role": "user",
+        "content": "Mera jigar gaya ji."
+    },
+    {
+        "role": "assistant",
+        "content": "It seems like you're speaking in Hindi, Boss. I'll do my best to help, but I may not always understand the context or nuances of the language. If you'd like to communicate in English, I'd be happy to assist you."
+    },
+    {
+        "role": "user",
+        "content": "Jumme raat idhar."
+    },
+    {
+        "role": "assistant",
+        "content": "I am not sure, would you like me to search online, Boss?"
+    }
+]

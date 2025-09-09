@@ -1,0 +1,100 @@
+//+------------------------------------------------------------------+
+//|                                                SupertrendEA.mq5 |
+//|                   Automated Buy and Sell Version                |
+//+------------------------------------------------------------------+
+#property strict
+
+input int    MainPeriod       = 30;
+input double MainMultiplier   = 9.0;
+input int    SignalPeriod     = 10;
+input double SignalMultiplier = 3.0;
+input double Lots             = 0.1;
+
+double atrMain, atrSignal;
+double upMain, downMain, upSignal, downSignal;
+int trendMain = 0, trendMainPrev = 0;
+int trendSignal = 0, trendSignalPrev = 0;
+
+datetime lastTradeTime = 0;
+
+#include <Trade\Trade.mqh>
+CTrade trade;
+
+// === ATR Calculation ===
+double GetATR(int period, int shift)
+{
+   return iATR(_Symbol, _Period, period, shift);
+}
+
+void OnTick()
+{
+   int shift = 1;
+
+   // === ATRs ===
+   atrMain   = GetATR(MainPeriod, shift);
+   atrSignal = GetATR(SignalPeriod, shift);
+
+   double hl2 = (High[shift] + Low[shift]) / 2;
+
+   // === Main Supertrend ===
+   upMain = hl2 - (MainMultiplier * atrMain);
+   downMain = hl2 + (MainMultiplier * atrMain);
+   trendMainPrev = trendMain;
+
+   if (Close[shift + 1] > upMain)
+      trendMain = 1;
+   else if (Close[shift + 1] < downMain)
+      trendMain = -1;
+   else
+      trendMain = trendMainPrev;
+
+   // === Signal Supertrend ===
+   upSignal = hl2 - (SignalMultiplier * atrSignal);
+   downSignal = hl2 + (SignalMultiplier * atrSignal);
+   trendSignalPrev = trendSignal;
+
+   if (Close[shift + 1] > upSignal)
+      trendSignal = 1;
+   else if (Close[shift + 1] < downSignal)
+      trendSignal = -1;
+   else
+      trendSignal = trendSignalPrev;
+
+   // === Trade Logic ===
+   bool buySignal  = (trendSignalPrev == -1 && trendSignal == 1);
+   bool inGreen    = (trendMain == 1);
+
+   bool sellSignal = (trendSignalPrev == 1 && trendSignal == -1);
+   bool inRed      = (trendMain == -1);
+
+   // Close opposite position if any
+   if (PositionSelect(_Symbol))
+   {
+      long type = PositionGetInteger(POSITION_TYPE);
+
+      if (type == POSITION_TYPE_BUY && sellSignal && inRed)
+      {
+         trade.Close(_Symbol);
+         lastTradeTime = Time[0];
+      }
+      else if (type == POSITION_TYPE_SELL && buySignal && inGreen)
+      {
+         trade.Close(_Symbol);
+         lastTradeTime = Time[0];
+      }
+   }
+
+   // Open new BUY
+   if (buySignal && inGreen && !PositionSelect(_Symbol) && Time[0] != lastTradeTime)
+   {
+      trade.Buy(Lots, _Symbol);
+      lastTradeTime = Time[0];
+   }
+
+   // Open new SELL
+   if (sellSignal && inRed && !PositionSelect(_Symbol) && Time[0] != lastTradeTime)
+   {
+      trade.Sell(Lots, _Symbol);
+      lastTradeTime = Time[0];
+   }
+}
